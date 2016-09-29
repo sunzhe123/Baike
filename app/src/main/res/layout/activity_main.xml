@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.hither.baike.activity.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayoutID"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:background="#000" />
 
     <LinearLayout
         android:id="@+id/select_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#999999"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -79,10 +87,5 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/frameLayoutID"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/select_layout"
-        android:background="#000" />
-</RelativeLayout>
+
+</LinearLayout>

@@ -11,6 +11,7 @@ import com.hither.baike.fragment.ImFragment;
 import com.hither.baike.fragment.MapFragment;
 import com.hither.baike.fragment.NewsFragment;
 import com.hither.baike.fragment.OtherFragment;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity {
     private int index;
     //代表当前fragment的index
     private int currentTabIndex;
+    private SlidingMenu slidingMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,13 @@ public class MainActivity extends BaseActivity {
         fragments = new Fragment[]{newsFragment, imFragment, mapFragment, otherFragment};
         getSupportFragmentManager().beginTransaction().add(R.id.frameLayoutID, fragments[0]).add(R.id.frameLayoutID, fragments[1]).
                 show(fragments[0]).hide(fragments[1]).commit();
+        slidingMenu = new SlidingMenu(this);
+        slidingMenu.setMode(SlidingMenu.LEFT_RIGHT);
+        slidingMenu.setMenu(R.layout.slidingmenu_left);
+        slidingMenu.setBehindWidth(getResources().getDisplayMetrics().widthPixels * 4 / 5);
+        slidingMenu.setSecondaryMenu(R.layout.sledingmenu_right);
+        slidingMenu.setAboveOffset(0);
+        slidingMenu.attachToActivity(this, SlidingMenu.TOUCHMODE_FULLSCREEN);
     }
 
     @OnClick({R.id.newsID, R.id.imID, R.id.mapID, R.id.othersID})
